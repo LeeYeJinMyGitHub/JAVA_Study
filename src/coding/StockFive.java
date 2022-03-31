@@ -8,14 +8,14 @@ public class StockFive extends Thread{
 	public void run() {
 		Thread t = Thread.currentThread();
 		
-		System.out.println("-------- Á¾¸ñ 5 --------");
-		System.out.println(t.getName() + " ÀüÀÏ Á¾°¡ : " + MainTest.myStockMarket.getPreviousCloseOfStockFive());
+		System.out.println("-------- ì¢…ëª© 5 --------");
+		System.out.println(t.getName() + " ì „ì¼ ì¢…ê°€ : " + MainTest.myStockMarket.getPreviousCloseOfStockFive());
 		MainTest.myStockMarket.ifelseExMoney();
-		System.out.println(t.getName() + " ÇöÀç°¡ : " + MainTest.myStockMarket.getCurrentPriceOfStockFive());
-		System.out.println(t.getName() + " µî¶ô·ü : " + ((( MainTest.myStockMarket.getCurrentPriceOfStockFive() - MainTest.myStockMarket.getPreviousCloseOfStockFive()) / MainTest.myStockMarket.getPreviousCloseOfStockFive()) *100 ) +"%");
+		System.out.println(t.getName() + " í˜„ì¬ê°€ : " + MainTest.myStockMarket.getCurrentPriceOfStockFive());
+		System.out.println(t.getName() + " ë“±ë½ë¥   : " + ((( MainTest.myStockMarket.getCurrentPriceOfStockFive() - MainTest.myStockMarket.getPreviousCloseOfStockFive()) / MainTest.myStockMarket.getPreviousCloseOfStockFive()) *100 ) +"%");
 
-		System.out.println(t.getName() + " ÇöÀç º¸À¯·® : " + MainTest.myStockMarket.getVolumeOfStockFive());
+		System.out.println(t.getName() + " ë³´ìœ ëŸ‰ : " + MainTest.myStockMarket.getVolumeOfStockFive());
 		StockFiveMoney = (int)MainTest.myStockMarket.getCurrentPriceOfStockFive() * MainTest.myStockMarket.getVolumeOfStockFive();
-		System.out.println(t.getName() + " ÇöÀç Æò°¡¾× : " + StockFiveMoney);
+		System.out.println(t.getName() + " í˜„ì¬ í‰ê°€ì•¡  : " + StockFiveMoney);
 	}
 }
