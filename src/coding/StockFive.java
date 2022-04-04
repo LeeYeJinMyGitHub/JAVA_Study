@@ -1,21 +1,31 @@
 package coding;
 
-public class StockFive extends Thread{
-	
-	public int StockFiveMoney = 0;
-	
-	@Override
-	public void run() {
-		Thread t = Thread.currentThread();
-		
-		System.out.println("-------- 종목 5 --------");
-		System.out.println(t.getName() + " 전일 종가 : " + MainTest.myStockMarket.getPreviousCloseOfStockFive());
-		MainTest.myStockMarket.ifelseExMoney();
-		System.out.println(t.getName() + " 현재가 : " + MainTest.myStockMarket.getCurrentPriceOfStockFive());
-		System.out.println(t.getName() + " 등락률  : " + ((( MainTest.myStockMarket.getCurrentPriceOfStockFive() - MainTest.myStockMarket.getPreviousCloseOfStockFive()) / MainTest.myStockMarket.getPreviousCloseOfStockFive()) *100 ) +"%");
+public class StockFive extends Stock{
 
-		System.out.println(t.getName() + " 보유량 : " + MainTest.myStockMarket.getVolumeOfStockFive());
-		StockFiveMoney = (int)MainTest.myStockMarket.getCurrentPriceOfStockFive() * MainTest.myStockMarket.getVolumeOfStockFive();
-		System.out.println(t.getName() + " 현재 평가액  : " + StockFiveMoney);
+	public StockFive(int stockNum, int previousClose, int volume) {
+		super(stockNum, previousClose, volume);
 	}
+
+	@Override
+	public int calcStockPrice() {
+		int m = super.getPreviousClose();
+		
+		if (0 <= m && m <= 10000) {
+			calcStockPrice = (m + 3000);
+			return (m + 3000);
+		}
+		else if (10000 < m && m <= 50000) {
+			calcStockPrice = (m + 2500);
+			return (m + 2500);
+		}
+		else if (50000 < m && m <= 100000) {
+			calcStockPrice = (m + 2000);
+			return (m + 2000);
+		}
+		else {
+			calcStockPrice = (m + 1500);
+			return (m + 1500);	
+		}
+	}
+			
 }

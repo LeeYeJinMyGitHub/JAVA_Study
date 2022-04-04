@@ -1,64 +1,58 @@
 package coding;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
-public class MainTest extends Thread{
-
-	public static StockMarket myStockMarket = new StockMarket();
-
-	static int StockAllAllMoney = 0;
+public class MainTest{
 	
-	public static void main(String... args){
+	public static void main(String[] args){
 		
-		while(true) { //5ÃÊ¸¦ ÁÖ±â·Î »õ·Î°íÄ§ ¹«ÇÑ¹İº¹
+		ArrayList<Stock> stockList = new ArrayList<Stock>();
 		
-			LocalTime displayTime = LocalTime.now();
-			
-			System.out.println("_______________________");
-			System.out.println("ÁÖ½Ä ÀÜ°í");
-			System.out.println("ÇöÀç ½Ã°£ : " + displayTime);
-			
-			StockOne stockOne = new StockOne();
-			StockTwo stockTwo = new StockTwo();
-			StockThree stockThree = new StockThree();
-			StockFour stockFour = new StockFour();
-			StockFive stockFive = new StockFive();
-			
-			try {		
-				
-				stockOne.start();
-				stockOne.join();
+		Stock stockOne = new StockOne(1,13400,40);
+		Stock stockTwo = new StockTwo(2,49550,2);
+		Stock stockThree = new StockThree(3,29650,3);
+		Stock stockFour = new StockFour(4,39250,17);
+		Stock stockFive = new StockFive(5,118000,2);
+		Stock stockSix = new StockFive(6,118000,2);
 		
-				stockTwo.start();
-				stockTwo.join();
-			
-				stockThree.start();
-				stockThree.join();
-			
-				stockFour.start();
-				stockFour.join();
-			
-				stockFive.start();
-				stockFive.join();
-				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		stockList.add(stockOne);
+		stockList.add(stockTwo);
+		stockList.add(stockThree);
+		stockList.add(stockFour);
+		stockList.add(stockFive);
+		stockList.add(stockSix);
+		
+		LocalTime displayTime = LocalTime.now();
+		
+		System.out.println("ë‚´ ì£¼ì‹ ì”ê³ ");
+		System.out.println("í˜„ì¬ ì‹œê°„ : " + displayTime);
 	
-			StockAllAllMoney = (int)(stockOne.StockOneMoney + 
-					stockTwo.StockTwoMoney + 
-					stockThree.StockThreeMoney + 
-					stockFour.StockFourMoney + 
-					stockFive.StockFiveMoney);
-	
-			displayTime = LocalTime.now();
-			System.out.println("_______________________");
-			System.out.println("Á¾ÇÕ Æò°¡¾× : " + StockAllAllMoney);
-			System.out.println("°»½Å ½Ã°£ : " + displayTime);
-			System.out.println("_______________________");
+		System.out.println("____________________________________________________________________________");
+		System.out.printf("%5s %9s %8s %8s %9s %10s %9s" , "ë²ˆí˜¸", "ì „ì¼ì¢…ê°€", "í˜„ì¬ê°€", "ì „ì¼ëŒ€ë¹„", "ë“±ë½ë¥ ", "ìˆ˜ëŸ‰", "í‰ê°€ì•¡" );
+		System.out.println();
+		System.out.println("____________________________________________________________________________");
 		
-			Thread.sleep(5000);
+		for (Stock stock : stockList){
+				stock.showStockInfo();			
 		}
+	
+		displayTime = LocalTime.now();
+		System.out.println("____________________________________________________________________________");
+		
+		int AllPrice = 0;
+		for (Stock stock : stockList){
+			AllPrice += stock.calcStockAllPrice();
+		}	
+		
+		System.out.println(
+			"                                                    ì¢…í•© í‰ê°€ì•¡ : "  
+			+ AllPrice		
+			+ " \u20A9"
+		);
+		
+		System.out.println("ê°±ì‹  ì‹œê°„ " + displayTime);
+		
 	}
 
 }
