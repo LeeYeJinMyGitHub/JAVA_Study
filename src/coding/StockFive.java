@@ -1,6 +1,6 @@
 package coding;
 
-public class StockFive extends Stock{
+public class StockFive extends Stock {
 
 	public StockFive(int stockNum, int previousClose, int volume) {
 		super(stockNum, previousClose, volume);
@@ -26,6 +26,12 @@ public class StockFive extends Stock{
 			calcStockPrice = (m + 1500);
 			return (m + 1500);	
 		}
+	}
+	
+	@Override
+	public void run() {
+		showStockInfo();
+		allPrice += calcStockAllPrice();
 	}
 			
 }

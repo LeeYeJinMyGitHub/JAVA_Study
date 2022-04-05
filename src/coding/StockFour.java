@@ -2,7 +2,7 @@ package coding;
 
 import java.util.Random;
 
-public class StockFour extends Stock{
+public class StockFour extends Stock {
 
 	public StockFour(int stockNum, int previousClose, int volume) {
 		super(stockNum, previousClose, volume);
@@ -21,4 +21,11 @@ public class StockFour extends Stock{
 		return calcStockPrice;
 	}
 	
+	@Override
+	public void run() {
+		showStockInfo();
+		allPrice += calcStockAllPrice();
+	}
+			
+
 }

@@ -1,11 +1,17 @@
 package coding;
 
-public class Stock {
+import java.text.DecimalFormat;
+
+public class Stock implements Runnable{
 	
 	private int stockNum;
 	private int previousClose;     //전일 종가
 	protected int calcStockPrice;  //현재가 (종목 별 계산에 따른)
-	private int volume;            //수량
+	private int volume;            //수량	
+	
+	public static int allPrice;
+	
+	public Stock() {}
 	
 	public Stock(int stockNum, int previousClose, int volume) {
 		this.stockNum = stockNum;
@@ -59,17 +65,28 @@ public class Stock {
 		return calcStockPrice - previousClose;
 	}
 	
-	public void showStockInfo() {
-		System.out.format("%5s %10s %10s %10s %10s %10s %10s", 
+	public synchronized void showStockInfo() {
+		
+		DecimalFormat formatter = new DecimalFormat("#,##0");
+		
+		System.out.format
+				("%5s %11s %10s %10s %10s %8s %12s", 
 				("종목 "+ getStockNum()),
-				(getPreviousClose() + " \u20A9"), 
-				(calcStockPrice() + " \u20A9"), 
-				(calcFluctuation()  + " \u20A9"),
-				((int)calcFluctuationRate() + " %"),
+				(formatter.format(getPreviousClose()) + " \u20A9"), 
+				(formatter.format(calcStockPrice()) + " \u20A9"), 
+				(formatter.format(calcFluctuation()) + " \u20A9"),
+				//((int)calcFluctuationRate() + " %"),
+				(String.format("%.2f",calcFluctuationRate()) + " %"),
 				(getVolume()),
-				(calcStockAllPrice() + " \u20A9")
+				(formatter.format(calcStockAllPrice()) + " \u20A9\n")
 				);
-		System.out.println();
+
+	}
+	
+	@Override
+	public void run() {
+		showStockInfo();
+
 	}
 
 }
