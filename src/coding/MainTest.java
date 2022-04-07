@@ -8,15 +8,15 @@ public class MainTest extends Thread{
 
 	static int StockAllAllMoney = 0;
 	
-	public static void main(String... args){
+	public static void main(String[] args){
 		
-		while(true) { //5ÃÊ¸¦ ÁÖ±â·Î »õ·Î°íÄ§ ¹«ÇÑ¹İº¹
+		while(true) { //5ì´ˆë¥¼ ì£¼ê¸°ë¡œ ìƒˆë¡œê³ ì¹¨ ë¬´í•œë°˜ë³µ
 		
 			LocalTime displayTime = LocalTime.now();
 			
 			System.out.println("_______________________");
-			System.out.println("ÁÖ½Ä ÀÜ°í");
-			System.out.println("ÇöÀç ½Ã°£ : " + displayTime);
+			System.out.println("ì£¼ì‹ ì”ê³ ");
+			System.out.println("í˜„ì¬ ì‹œê°„ : " + displayTime);
 			
 			StockOne stockOne = new StockOne();
 			StockTwo stockTwo = new StockTwo();
@@ -53,8 +53,8 @@ public class MainTest extends Thread{
 	
 			displayTime = LocalTime.now();
 			System.out.println("_______________________");
-			System.out.println("Á¾ÇÕ Æò°¡¾× : " + StockAllAllMoney);
-			System.out.println("°»½Å ½Ã°£ : " + displayTime);
+			System.out.println("ì¢…í•© í‰ê°€ì•¡ : " + StockAllAllMoney);
+			System.out.println("ê°±ì‹  ì‹œê°„ : " + displayTime);
 			System.out.println("_______________________");
 		
 			Thread.sleep(5000);
