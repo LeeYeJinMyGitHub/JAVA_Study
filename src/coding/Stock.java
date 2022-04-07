@@ -11,8 +11,6 @@ public class Stock implements Runnable{
 	
 	public static int allPrice;
 	
-	public Stock() {}
-	
 	public Stock(int stockNum, int previousClose, int volume) {
 		this.stockNum = stockNum;
 
@@ -30,16 +28,8 @@ public class Stock implements Runnable{
 		return stockNum;
 	}
 
-	public void setStockNum(int stockNum) {
-		this.stockNum = stockNum;
-	}
-	
 	public int getPreviousClose() {
 		return previousClose;
-	}
-	
-	public void setPreviousClose(int previousClose) {
-		this.previousClose = previousClose;
 	}
 	
 	public int calcStockPrice() {
@@ -48,9 +38,6 @@ public class Stock implements Runnable{
 	
 	public int getVolume() {
 		return volume;
-	}
-	public void setVolume(int volume) {
-		this.volume = volume;
 	}
 	
 	public double calcFluctuationRate() {	
@@ -65,7 +52,7 @@ public class Stock implements Runnable{
 		return calcStockPrice - previousClose;
 	}
 	
-	public synchronized void showStockInfo() {
+	public void showStockInfo() {
 		
 		DecimalFormat formatter = new DecimalFormat("#,##0");
 		
@@ -75,7 +62,6 @@ public class Stock implements Runnable{
 				(formatter.format(getPreviousClose()) + " \u20A9"), 
 				(formatter.format(calcStockPrice()) + " \u20A9"), 
 				(formatter.format(calcFluctuation()) + " \u20A9"),
-				//((int)calcFluctuationRate() + " %"),
 				(String.format("%.2f",calcFluctuationRate()) + " %"),
 				(getVolume()),
 				(formatter.format(calcStockAllPrice()) + " \u20A9\n")

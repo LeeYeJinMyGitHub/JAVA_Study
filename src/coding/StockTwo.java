@@ -11,6 +11,7 @@ public class StockTwo extends Stock {
 		int m = super.getPreviousClose();
 		int ratio = -30;
 		calcStockPrice = ((int)(m + m*ratio*0.01));
+		
 		return ((int)(m + m*ratio*0.01));
 		
 	}

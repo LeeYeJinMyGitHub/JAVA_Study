@@ -36,7 +36,6 @@ public class MainTest{
 		System.out.printf("%80s", "현재 시간 : " + currentTime+"\n");
 	
 		System.out.println("_______________________________________________________________________________");
-		//%s 문자열 형식으로 출력
 		System.out.printf("%13s %9s %9s %9s %9s %7s %11s" , "번호", "전일종가", "현재가", "전일대비", "등락률", "수량", "평가액\n" );
 		System.out.println("_______________________________________________________________________________");
 		
@@ -58,7 +57,7 @@ public class MainTest{
 				//메인쓰레드에서의 총합 계산식이 있으므로 thread join 걸어놓음
 				stock.join();
 			
-				//TERMINATED 상태 - 쓰레드 종효 상태
+				//TERMINATED 상태 - 쓰레드 종료 상태
 				//System.out.print(stock.getName());
 				//System.out.println(stock.getState());
 			} catch (InterruptedException e) {
@@ -67,14 +66,6 @@ public class MainTest{
 			}
 		}
 		
-		/*
-		int AllPrice = 
-				StockOne.calcStockAllPrice()
-				+ StockTwo.calcStockAllPrice()
-				+ StockThree.calcStockAllPrice()
-				+ StockFour.calcStockAllPrice()
-				+ StockFive.calcStockAllPrice()
-		; */
 
 		DecimalFormat formatter = new DecimalFormat("#,##0");
 		currentTime = LocalTime.now();

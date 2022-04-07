@@ -11,8 +11,10 @@ public class StockThree extends Stock {
 		int m = super.getPreviousClose();
 		int ratio = 1;
 		calcStockPrice = (int)(m + m*ratio*0.01);
+		
 		return ((int)(m + m*ratio*0.01));
 	}
+	
 	@Override
 	public void run() {
 		showStockInfo();
