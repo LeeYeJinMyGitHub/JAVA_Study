@@ -14,11 +14,5 @@ public class StockThree extends Stock {
 		
 		return ((int)(m + m*ratio*0.01));
 	}
-	
-	@Override
-	public void run() {
-		showStockInfo();
-		allPrice += calcStockAllPrice();
-	}
 			
 }

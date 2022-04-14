@@ -18,13 +18,6 @@ public class StockFour extends Stock {
 		calcStockPrice = ((int)(m + m*(randomNum*0.01)));
 		
 		return calcStockPrice;
-	}
-	
-	@Override
-	public void run() {
-		showStockInfo();
-		allPrice += calcStockAllPrice();
-	}
-			
+	}	
 
 }

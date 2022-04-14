@@ -5,11 +5,11 @@ import java.text.DecimalFormat;
 public class Stock implements Runnable{
 	
 	private int stockNum;
-	private int previousClose;     //전일 종가
-	protected int calcStockPrice;  //현재가 (종목 별 계산에 따른)
-	private int volume;            //수량	
+	private int previousClose;        //전일 종가
+	private int volume;               //수량	
 	
-	public static int allPrice;
+	protected int calcStockPrice;     //현재가 (종목 별 계산에 따른)
+	private static int sTotalPrice;   //모든 종목 총합 가격
 	
 	public Stock(int stockNum, int previousClose, int volume) {
 		this.stockNum = stockNum;
@@ -52,6 +52,14 @@ public class Stock implements Runnable{
 		return calcStockPrice - previousClose;
 	}
 	
+	public static int getsTotalPrice() {
+		return sTotalPrice;
+	}
+
+	public void setsTotalPrice() {
+		sTotalPrice += calcStockAllPrice();
+	}
+	
 	public void showStockInfo() {
 		
 		DecimalFormat formatter = new DecimalFormat("#,##0");
@@ -72,7 +80,7 @@ public class Stock implements Runnable{
 	@Override
 	public void run() {
 		showStockInfo();
-
+		setsTotalPrice();
 	}
 
 }

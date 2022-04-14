@@ -31,11 +31,5 @@ public class StockFive extends Stock {
 			return (m + 1500);	
 		}
 	}
-	
-	@Override
-	public void run() {
-		showStockInfo();
-		allPrice += calcStockAllPrice();
-	}
-			
+		
 }
